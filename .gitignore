@@ -5,4 +5,8 @@
 /*.rbxlx.lock
 /*.rbxl.lock
 
+# Build artifacts (generated place files)
+/*.rbxl
+
+# Rojo sourcemap
 sourcemap.json
