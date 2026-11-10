@@ -243,13 +243,31 @@ buyPet.OnServerInvoke = function(player: Player, petId: string)
 	end
 
 	-- Purchase
-	DataStoreService.SetStat(player, "Coins", coins - petDef.Cost)
+	local newCoins = coins - petDef.Cost
+	DataStoreService.SetStat(player, "Coins", newCoins)
 	DataStoreService.AddPet(player, petId)
 
 	-- Update visible stats
 	local leaderstats = player:FindFirstChild("leaderstats")
+	local hiddenStats = player:FindFirstChild("HiddenStats")
 	if leaderstats then
-		leaderstats.Coins.Value = coins - petDef.Cost
+		leaderstats.Coins.Value = newCoins
+	end
+
+	-- Update pet bonuses so mining/earnings/sell logic sees them
+	if hiddenStats then
+		local petBonuses = hiddenStats:FindFirstChild("PetBonuses") :: NumberValue?
+		if petBonuses then
+			local data = DataStoreService.GetData(player)
+			local totalBonus = 0
+			for _, ownedPetId in ipairs(data.Pets or {}) do
+				local ownedPet = GameConfig.PETS[ownedPetId]
+				if ownedPet then
+					totalBonus += ownedPet.EarningsBonus
+				end
+			end
+			petBonuses.Value = totalBonus
+		end
 	end
 
 	return true, "Purchased " .. petDef.Name .. "!"
@@ -402,7 +420,7 @@ prestigeEvent.OnServerInvoke = function(player: Player)
 	if not data then return false, "Data missing" end
 
 	local coins = data.Coins
-	local prestigeLevel = data.PrestIGE_LEVEL or 0
+	local prestigeLevel = data.PrestigeLevel or 0
 
 	if prestigeLevel >= GameConfig.MAX_PRESTIGE then
 		return false, "You're already at maximum prestige!"

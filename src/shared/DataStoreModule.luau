@@ -34,7 +34,15 @@ local playerCache = {}
 local DataStoreServiceModule = {}
 
 function DataStoreServiceModule.GetData(player: Player): any
-	return playerCache[player.UserId] or DEFAULT_DATA
+	local cached = playerCache[player.UserId]
+	if cached then
+		return cached
+	end
+	-- Never return the shared DEFAULT_DATA table: every uncached player would
+	-- mutate the same object and leak data between accounts.
+	local fresh = table.clone(DEFAULT_DATA)
+	playerCache[player.UserId] = fresh
+	return fresh
 end
 
 function DataStoreServiceModule.GetStat(player: Player, stat: string): any

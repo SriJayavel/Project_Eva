@@ -30,6 +30,17 @@ local ACHIEVEMENTS = {
 -- Track achievement progress per player
 local achievementProgress = {}
 
+-- Give player achievement reward (avoid double-counting)
+local function grantReward(player: Player, amount: number)
+	local leaderstats = player:FindFirstChild("leaderstats")
+	if leaderstats then
+		local coins = leaderstats:FindFirstChild("Coins")
+		if coins then
+			coins.Value = coins.Value + amount
+		end
+	end
+end
+
 -- Hook into mining events to track progress
 local mineEvent = Network.getRemoteEvent("MineBlockEvent")
 mineEvent.OnServerEvent:Connect(function(player: Player, targetBlock: any)
@@ -49,19 +60,16 @@ mineEvent.OnServerEvent:Connect(function(player: Player, targetBlock: any)
 			progress[ach.Id] = true
 			local data = DataStoreService.GetData(player)
 			if data then
-				DataStoreService.SetStat(player, "Coins", data.Coins + ach.Reward)
-				-- Notify
-				local leaderstats = player:FindFirstChild("leaderstats")
-				if leaderstats then
-					leaderstats.Coins.Value = data.Coins + ach.Reward
-				end
+				local newCoins = data.Coins + ach.Reward
+				DataStoreService.SetStat(player, "Coins", newCoins)
+				grantReward(player, ach.Reward)
 			end
 			print("🏆 " .. player.Name .. " earned achievement: " .. ach.Name)
 		end
 	end
 end)
 
--- Hook into coin earnings
+-- Hook into coin earnings (for shop purchases, sales, etc.)
 local function onCoinEarned(player: Player, amount: number)
 	if not achievementProgress[player.UserId] then
 		achievementProgress[player.UserId] = {}
@@ -76,7 +84,9 @@ local function onCoinEarned(player: Player, amount: number)
 			progress[ach.Id] = true
 			local data = DataStoreService.GetData(player)
 			if data then
-				DataStoreService.SetStat(player, "Coins", data.Coins + ach.Reward)
+				local newCoins = data.Coins + ach.Reward
+				DataStoreService.SetStat(player, "Coins", newCoins)
+				grantReward(player, ach.Reward)
 			end
 			print("🏆 " .. player.Name .. " earned achievement: " .. ach.Name)
 		end
@@ -100,8 +110,11 @@ prestigeEvent.OnServerInvoke = function(player: Player)
 			progress["prestige_1"] = true
 			local data = DataStoreService.GetData(player)
 			if data then
-				DataStoreService.SetStat(player, "Coins", data.Coins + 10000)
+				local newCoins = data.Coins + 10000
+				DataStoreService.SetStat(player, "Coins", newCoins)
+				grantReward(player, 10000)
 			end
+			print("🏆 " .. player.Name .. " earned achievement: Prestige Seeker")
 		end
 	end
 

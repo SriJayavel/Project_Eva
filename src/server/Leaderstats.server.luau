@@ -66,10 +66,10 @@ local function setupPlayer(player: Player)
 	hasSeenTutorial.Value = data.HasSeenTutorial or false
 	hasSeenTutorial.Parent = hiddenStats
 
-	-- Pet bonuses
+	-- Pet bonuses (computed from owned pets)
 	local petBonuses = Instance.new("NumberValue")
 	petBonuses.Name = "PetBonuses"
-	petBonuses.Value = 0
+	petBonuses.Value = data.PetBonus or 0
 	petBonuses.Parent = hiddenStats
 
 	-- Active buffs folder
