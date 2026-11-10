@@ -1,0 +1,100 @@
+# Project Eva — Industrial Prison World Transformation
+
+You are the lead Roblox environment architect for Project Eva.
+
+## Project details
+- Location: `C:\Project_Files\Eva`
+- Engine: Roblox Studio
+- Language: Luau with strict typing
+- Sync: Rojo 7.7.1
+- Existing place: `EvaGame.rbxl`
+
+## Objective
+
+Transform the existing basic prison mining simulator into a detailed Industrial Prison Tycoon environment.
+
+The selected visual direction is:
+- Industrial prison architecture
+- Concrete and weathered steel
+- Guard towers and security fences
+- Industrial mining facilities
+- Processing factories and machinery
+- Atmospheric lighting and environmental storytelling
+
+We are rebuilding the entire world while preserving existing gameplay functionality.
+
+## Stage 1: Audit
+
+Before modifying anything:
+
+1. Inspect the complete source tree.
+2. Inspect `default.project.json`.
+3. Identify how the current 192 ore blocks are generated or represented.
+4. Identify existing spawn points, mine locations, teleport destinations, sell pads and shop locations.
+5. Identify dependencies between the world and existing server/client scripts.
+6. Identify which existing structures can be reused.
+7. Check Git status and establish a safe baseline if necessary.
+
+## Stage 2: World design
+
+Create a proposed world layout containing:
+
+1. Main entrance and security checkpoint.
+2. Central prison yard.
+3. Prison cell block.
+4. Industrial workshop.
+5. Mine A.
+6. Mine B.
+7. Mine C.
+8. Ore processing and selling facility.
+9. Shop and upgrade area.
+10. Outer perimeter and freedom gate.
+
+Define approximate coordinates, dimensions, elevation and player navigation between areas.
+
+The layout must feel like one connected facility.
+
+## Stage 3: Technical architecture
+
+Propose a modular world-generation architecture.
+
+Consider:
+- Reusable building components.
+- Reusable industrial props.
+- Modular mine construction.
+- Consistent materials and colors.
+- Lighting configuration.
+- Collision and navigation.
+- Performance and part counts.
+- Roblox streaming compatibility.
+
+Do not move or rename existing scripts without establishing their dependencies.
+
+## Stage 4: Deliverables
+
+Create a document named `WORLD_TRANSFORMATION_PLAN.md` containing:
+
+- Existing world audit.
+- Proposed map layout.
+- Coordinate plan.
+- Building dimensions.
+- Visual design standards.
+- Modular architecture.
+- Development phases.
+- Dependencies and risks.
+- Testing checklist.
+
+## Strict restrictions
+
+- Do not rewrite existing gameplay systems.
+- Do not modify DataStore logic.
+- Do not delete existing assets.
+- Do not replace the current place file.
+- Do not generate the complete world yet.
+- Do not install additional libraries unnecessarily.
+
+For this task, perform analysis and planning only.
+
+At the end, provide a concise report of findings, proposed architecture and the next implementation step.
+
+Wait for approval before beginning world construction.
