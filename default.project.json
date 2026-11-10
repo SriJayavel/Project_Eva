@@ -1,0 +1,6455 @@
+{
+  "name": "Eva",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "Shared": {
+        "$path": "src/shared"
+      },
+      "Remotes": {
+        "$className": "Folder",
+        "MineBlockEvent": {
+          "$className": "RemoteEvent"
+        },
+        "BuyPickaxe": {
+          "$className": "RemoteFunction"
+        },
+        "BuyBackpack": {
+          "$className": "RemoteFunction"
+        },
+        "RankUpEvent": {
+          "$className": "RemoteFunction"
+        },
+        "TeleportToMine": {
+          "$className": "RemoteFunction"
+        },
+        "ToggleAutoSell": {
+          "$className": "RemoteFunction"
+        },
+        "MineResetCountdown": {
+          "$className": "RemoteEvent"
+        },
+        "BuyPet": {
+          "$className": "RemoteFunction"
+        },
+        "BuyAutoMine": {
+          "$className": "RemoteFunction"
+        },
+        "ActivateBuff": {
+          "$className": "RemoteFunction"
+        },
+        "ClaimQuest": {
+          "$className": "RemoteFunction"
+        },
+        "PrestigeEvent": {
+          "$className": "RemoteFunction"
+        }
+      }
+    },
+    "ServerScriptService": {
+      "Server": {
+        "$path": "src/server"
+      }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "HUDController": {
+          "$path": "src/client/HUDController.client.luau"
+        }
+      }
+    },
+    "StarterPack": {
+      "Pickaxe": {
+        "$className": "Tool",
+        "$properties": {
+          "RequiresHandle": true,
+          "CanBeDropped": false,
+          "ToolTip": "Click mine blocks to dig!"
+        },
+        "Handle": {
+          "$className": "Part",
+          "$properties": {
+            "Size": [
+              1,
+              3.2,
+              0.4
+            ],
+            "Color": [
+              0.55,
+              0.35,
+              0.2
+            ],
+            "Material": "Wood",
+            "CanCollide": false
+          }
+        },
+        "PickaxeController": {
+          "$path": "src/tools/PickaxeController.client.luau"
+        }
+      }
+    },
+    "Workspace": {
+      "$properties": {
+        "FilteringEnabled": true
+      },
+      "Baseplate": {
+        "$className": "Part",
+        "$properties": {
+          "Anchored": true,
+          "Color": [
+            0.28,
+            0.3,
+            0.32
+          ],
+          "Locked": true,
+          "Position": [
+            0,
+            -1,
+            0
+          ],
+          "Size": [
+            512,
+            2,
+            512
+          ],
+          "Material": "Concrete"
+        }
+      },
+      "SpawnLocation": {
+        "$className": "SpawnLocation",
+        "$properties": {
+          "Anchored": true,
+          "Position": [
+            0,
+            0.5,
+            10
+          ],
+          "Size": [
+            14,
+            1,
+            14
+          ],
+          "Color": [
+            0.15,
+            0.55,
+            0.95
+          ],
+          "Material": "Neon",
+          "Duration": 0
+        }
+      },
+      "SellPad": {
+        "$className": "Part",
+        "$properties": {
+          "Anchored": true,
+          "CanCollide": false,
+          "Color": [
+            0.18,
+            0.8,
+            0.44
+          ],
+          "Material": "Neon",
+          "Position": [
+            -22,
+            0.5,
+            -20
+          ],
+          "Size": [
+            14,
+            1,
+            14
+          ]
+        }
+      },
+      "ActiveMineBlocks": {
+        "$className": "Folder",
+        "Block_1_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -14.0,
+              2,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_2_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -14.0,
+              2,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_3_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -14.0,
+              2,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_4_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              -14.0,
+              2,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_5_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -14.0,
+              2,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_6_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -14.0,
+              2,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_7_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -14.0,
+              2,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_8_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -14.0,
+              2,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_9_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              -10.0,
+              2,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_10_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -10.0,
+              2,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_11_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              -10.0,
+              2,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_12_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              -10.0,
+              2,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_13_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -10.0,
+              2,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_14_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -10.0,
+              2,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_15_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -10.0,
+              2,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_16_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -10.0,
+              2,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_17_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -6.0,
+              2,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_18_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -6.0,
+              2,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_19_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -6.0,
+              2,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_20_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -6.0,
+              2,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_21_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -6.0,
+              2,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_22_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -6.0,
+              2,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_23_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -6.0,
+              2,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_24_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -6.0,
+              2,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_25_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -2.0,
+              2,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_26_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -2.0,
+              2,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_27_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              -2.0,
+              2,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_28_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -2.0,
+              2,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_29_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              -2.0,
+              2,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_30_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -2.0,
+              2,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_31_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -2.0,
+              2,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_32_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -2.0,
+              2,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_33_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              2.0,
+              2,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_34_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              2.0,
+              2,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_35_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              2.0,
+              2,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_36_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              2.0,
+              2,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_37_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              2.0,
+              2,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_38_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              2.0,
+              2,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_39_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              2.0,
+              2,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_40_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              2.0,
+              2,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_41_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              6.0,
+              2,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_42_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              6.0,
+              2,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_43_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              6.0,
+              2,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_44_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              6.0,
+              2,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_45_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              6.0,
+              2,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_46_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              6.0,
+              2,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_47_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              6.0,
+              2,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_48_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              6.0,
+              2,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_49_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              10.0,
+              2,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_50_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              10.0,
+              2,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_51_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              10.0,
+              2,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_52_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              10.0,
+              2,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_53_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              10.0,
+              2,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_54_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              10.0,
+              2,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_55_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              10.0,
+              2,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_56_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              10.0,
+              2,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_57_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              14.0,
+              2,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_58_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              14.0,
+              2,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_59_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              14.0,
+              2,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_60_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              14.0,
+              2,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_61_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              14.0,
+              2,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_62_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              14.0,
+              2,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_63_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              14.0,
+              2,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_64_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              14.0,
+              2,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_65_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -14.0,
+              6,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_66_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -14.0,
+              6,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_67_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -14.0,
+              6,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_68_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -14.0,
+              6,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_69_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              -14.0,
+              6,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_70_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -14.0,
+              6,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_71_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -14.0,
+              6,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_72_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -14.0,
+              6,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_73_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -10.0,
+              6,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_74_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              -10.0,
+              6,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_75_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -10.0,
+              6,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_76_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -10.0,
+              6,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_77_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -10.0,
+              6,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_78_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -10.0,
+              6,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_79_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -10.0,
+              6,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_80_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -10.0,
+              6,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_81_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -6.0,
+              6,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_82_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -6.0,
+              6,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_83_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -6.0,
+              6,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_84_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -6.0,
+              6,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_85_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -6.0,
+              6,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_86_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -6.0,
+              6,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_87_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -6.0,
+              6,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_88_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              -6.0,
+              6,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_89_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -2.0,
+              6,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_90_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              -2.0,
+              6,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_91_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              -2.0,
+              6,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_92_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -2.0,
+              6,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_93_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -2.0,
+              6,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_94_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -2.0,
+              6,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_95_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -2.0,
+              6,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_96_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -2.0,
+              6,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_97_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              2.0,
+              6,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_98_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              2.0,
+              6,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_99_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              2.0,
+              6,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_100_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              2.0,
+              6,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_101_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              2.0,
+              6,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_102_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              2.0,
+              6,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_103_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              2.0,
+              6,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_104_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              2.0,
+              6,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_105_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              6.0,
+              6,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_106_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              6.0,
+              6,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_107_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              6.0,
+              6,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_108_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              6.0,
+              6,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_109_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              6.0,
+              6,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_110_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              6.0,
+              6,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_111_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              6.0,
+              6,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_112_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              6.0,
+              6,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_113_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              10.0,
+              6,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_114_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              10.0,
+              6,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_115_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              10.0,
+              6,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_116_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              10.0,
+              6,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_117_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              10.0,
+              6,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_118_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              10.0,
+              6,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_119_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              10.0,
+              6,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_120_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              10.0,
+              6,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_121_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              14.0,
+              6,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_122_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              14.0,
+              6,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_123_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              14.0,
+              6,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_124_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              14.0,
+              6,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_125_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              14.0,
+              6,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_126_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              14.0,
+              6,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_127_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              14.0,
+              6,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_128_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              14.0,
+              6,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_129_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -14.0,
+              10,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_130_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -14.0,
+              10,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_131_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -14.0,
+              10,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_132_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -14.0,
+              10,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_133_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              -14.0,
+              10,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_134_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -14.0,
+              10,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_135_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -14.0,
+              10,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_136_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -14.0,
+              10,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_137_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              -10.0,
+              10,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_138_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -10.0,
+              10,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_139_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -10.0,
+              10,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_140_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -10.0,
+              10,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_141_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -10.0,
+              10,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_142_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -10.0,
+              10,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_143_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -10.0,
+              10,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_144_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -10.0,
+              10,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_145_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -6.0,
+              10,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_146_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -6.0,
+              10,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_147_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -6.0,
+              10,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_148_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              -6.0,
+              10,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_149_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -6.0,
+              10,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_150_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -6.0,
+              10,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_151_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -6.0,
+              10,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_152_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -6.0,
+              10,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_153_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -2.0,
+              10,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_154_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              -2.0,
+              10,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_155_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -2.0,
+              10,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_156_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -2.0,
+              10,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_157_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -2.0,
+              10,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_158_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -2.0,
+              10,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_159_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              -2.0,
+              10,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_160_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              -2.0,
+              10,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_161_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              2.0,
+              10,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_162_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              2.0,
+              10,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_163_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              2.0,
+              10,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_164_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              2.0,
+              10,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_165_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              2.0,
+              10,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_166_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              2.0,
+              10,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_167_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              2.0,
+              10,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_168_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              2.0,
+              10,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_169_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              6.0,
+              10,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_170_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              6.0,
+              10,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_171_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              6.0,
+              10,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_172_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              6.0,
+              10,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_173_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              6.0,
+              10,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_174_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              6.0,
+              10,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_175_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              6.0,
+              10,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_176_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              6.0,
+              10,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_177_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              10.0,
+              10,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_178_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              10.0,
+              10,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_179_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              10.0,
+              10,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_180_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              10.0,
+              10,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_181_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              10.0,
+              10,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_182_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              10.0,
+              10,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_183_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              10.0,
+              10,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_184_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              10.0,
+              10,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_185_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              14.0,
+              10,
+              -59.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_186_Iron": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.8431372549019608,
+              0.7254901960784313,
+              0.5686274509803921
+            ],
+            "Position": [
+              14.0,
+              10,
+              -55.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 6,
+            "MaxHealth": 6,
+            "Value": 8,
+            "OreType": "Iron",
+            "MineRank": "A"
+          }
+        },
+        "Block_187_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              14.0,
+              10,
+              -51.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_188_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              14.0,
+              10,
+              -47.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_189_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              14.0,
+              10,
+              -43.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_190_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              14.0,
+              10,
+              -39.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        },
+        "Block_191_Stone": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.5019607843137255,
+              0.5019607843137255,
+              0.5019607843137255
+            ],
+            "Position": [
+              14.0,
+              10,
+              -35.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 2,
+            "MaxHealth": 2,
+            "Value": 1,
+            "OreType": "Stone",
+            "MineRank": "A"
+          }
+        },
+        "Block_192_Coal": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Slate",
+            "Color": [
+              0.13725490196078433,
+              0.13725490196078433,
+              0.13725490196078433
+            ],
+            "Position": [
+              14.0,
+              10,
+              -31.0
+            ],
+            "Size": [
+              4,
+              4,
+              4
+            ],
+            "TopSurface": "Smooth",
+            "BottomSurface": "Smooth"
+          },
+          "$attributes": {
+            "Health": 3,
+            "MaxHealth": 3,
+            "Value": 3,
+            "OreType": "Coal",
+            "MineRank": "A"
+          }
+        }
+      },
+      "QuarryFrame": {
+        "$className": "Folder",
+        "NorthWall": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Cobblestone",
+            "Color": [
+              0.3137254901960784,
+              0.3137254901960784,
+              0.3333333333333333
+            ],
+            "Size": [
+              40,
+              4,
+              2
+            ],
+            "Position": [
+              0,
+              2,
+              -63
+            ]
+          }
+        },
+        "SouthWall": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Cobblestone",
+            "Color": [
+              0.3137254901960784,
+              0.3137254901960784,
+              0.3333333333333333
+            ],
+            "Size": [
+              40,
+              4,
+              2
+            ],
+            "Position": [
+              0,
+              2,
+              -27
+            ]
+          }
+        },
+        "WestWall": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Cobblestone",
+            "Color": [
+              0.3137254901960784,
+              0.3137254901960784,
+              0.3333333333333333
+            ],
+            "Size": [
+              2,
+              4,
+              36
+            ],
+            "Position": [
+              -18,
+              2,
+              -45
+            ]
+          }
+        },
+        "EastWall": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Cobblestone",
+            "Color": [
+              0.3137254901960784,
+              0.3137254901960784,
+              0.3333333333333333
+            ],
+            "Size": [
+              2,
+              4,
+              36
+            ],
+            "Position": [
+              18,
+              2,
+              -45
+            ]
+          }
+        },
+        "LanternNW": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Neon",
+            "Color": [
+              1.0,
+              0.6666666666666666,
+              0.1568627450980392
+            ],
+            "Size": [
+              1.5,
+              2,
+              1.5
+            ],
+            "Position": [
+              -18,
+              5,
+              -63
+            ]
+          }
+        },
+        "LanternNE": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Neon",
+            "Color": [
+              1.0,
+              0.6666666666666666,
+              0.1568627450980392
+            ],
+            "Size": [
+              1.5,
+              2,
+              1.5
+            ],
+            "Position": [
+              18,
+              5,
+              -63
+            ]
+          }
+        },
+        "LanternSW": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Neon",
+            "Color": [
+              1.0,
+              0.6666666666666666,
+              0.1568627450980392
+            ],
+            "Size": [
+              1.5,
+              2,
+              1.5
+            ],
+            "Position": [
+              -18,
+              5,
+              -27
+            ]
+          }
+        },
+        "LanternSE": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Neon",
+            "Color": [
+              1.0,
+              0.6666666666666666,
+              0.1568627450980392
+            ],
+            "Size": [
+              1.5,
+              2,
+              1.5
+            ],
+            "Position": [
+              18,
+              5,
+              -27
+            ]
+          }
+        }
+      },
+      "ShopStall": {
+        "$className": "Folder",
+        "Pillar1": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "WoodPlanks",
+            "Color": [
+              0.45098039215686275,
+              0.29411764705882354,
+              0.17647058823529413
+            ],
+            "Size": [
+              1.5,
+              12,
+              1.5
+            ],
+            "Position": [
+              -30,
+              6,
+              -28
+            ]
+          }
+        },
+        "Pillar2": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "WoodPlanks",
+            "Color": [
+              0.45098039215686275,
+              0.29411764705882354,
+              0.17647058823529413
+            ],
+            "Size": [
+              1.5,
+              12,
+              1.5
+            ],
+            "Position": [
+              -14,
+              6,
+              -28
+            ]
+          }
+        },
+        "Pillar3": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "WoodPlanks",
+            "Color": [
+              0.45098039215686275,
+              0.29411764705882354,
+              0.17647058823529413
+            ],
+            "Size": [
+              1.5,
+              12,
+              1.5
+            ],
+            "Position": [
+              -30,
+              6,
+              -12
+            ]
+          }
+        },
+        "Pillar4": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "WoodPlanks",
+            "Color": [
+              0.45098039215686275,
+              0.29411764705882354,
+              0.17647058823529413
+            ],
+            "Size": [
+              1.5,
+              12,
+              1.5
+            ],
+            "Position": [
+              -14,
+              6,
+              -12
+            ]
+          }
+        },
+        "Roof": {
+          "$className": "Part",
+          "$properties": {
+            "Anchored": true,
+            "Material": "Fabric",
+            "Color": [
+              0.9019607843137255,
+              0.27450980392156865,
+              0.23529411764705882
+            ],
+            "Size": [
+              20,
+              1.5,
+              20
+            ],
+            "Position": [
+              -22,
+              12,
+              -20
+            ]
+          }
+        }
+      }
+    },
+    "Lighting": {
+      "$properties": {
+        "Ambient": [
+          0.35,
+          0.35,
+          0.35
+        ],
+        "Brightness": 2,
+        "ClockTime": 14,
+        "GeographicLatitude": 41,
+        "GlobalShadows": true,
+        "Technology": "ShadowMap"
+      },
+      "Sky": {
+        "$className": "Sky",
+        "$properties": {
+          "SkyboxBk": "rbxassetid://6444884337",
+          "SkyboxDn": "rbxassetid://6444884785",
+          "SkyboxFt": "rbxassetid://6444884147",
+          "SkyboxLf": "rbxassetid://6444884640",
+          "SkyboxRt": "rbxassetid://6444884489",
+          "SkyboxUp": "rbxassetid://6444885006"
+        }
+      },
+      "Atmosphere": {
+        "$className": "Atmosphere",
+        "$properties": {
+          "Density": 0.3,
+          "Offset": 0.25,
+          "Color": [
+            0.78,
+            0.84,
+            0.94
+          ],
+          "Decay": [
+            0.42,
+            0.44,
+            0.5
+          ]
+        }
+      }
+    }
+  }
+}
